@@ -465,7 +465,7 @@ def parse_raw_whois(raw_data, normalized=None, never_query_handles=True, handle_
 							data["nameservers"] = [match.strip()]
 		
 		# NOTE: this is to avoid some messy issues below
-		data["registrar"] = ''
+		data["registrar"] = []
 		# Nominet also needs some special attention
 		match = re.search("    Registrar:\n        (.+)\n", segment)
 		if match is not None:
@@ -522,7 +522,10 @@ def parse_raw_whois(raw_data, normalized=None, never_query_handles=True, handle_
 		if match is not None:
 			chunk = match.group(1)
 			for match in re.findall("\s+?(.+)\n", chunk):
-				match = match.split()[0]
+				try:
+					match = match.split()[0]
+				except IndexError:
+					continue
 				# Prevent nameserver aliases from being picked up.
 				if not match.startswith("[") and not match.endswith("]"):
 					try:

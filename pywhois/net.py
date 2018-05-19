@@ -37,7 +37,7 @@ def get_root_server(domain, server="whois.iana.org"):
     try:	
     	tld = domain.split('.')[-1]
     	return cc_whois[cc.index(tld)]
-    except KeyError:
+    except (ValueError, KeyError):
     	return server
 
         
@@ -63,13 +63,9 @@ def get_whois_raw(domain, server=None, rfc3490=True, never_cut=False, with_serve
 		target_server = get_root_server(domain)
 	elif '.' + domain.split('.')[-1] in cc_tld:
 		target_server = get_root_server(domain)
-		print('Country Names no user server')
 	else:
 		target_server = server
 		
-
-
-
 	# deal with japanese case
 	if target_server == "whois.jprs.jp":
 		request_domain = "%s/e" % domain # Suppress Japanese output
@@ -130,5 +126,5 @@ def whois_request(domain, server, port=43):
 				break
 			buff += data
 		return buff.decode("latin-1")
-	except (ConnectionRefusedError, ConnectionResetError):
+	except:
 		return 'NA'
