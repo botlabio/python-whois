@@ -463,6 +463,9 @@ def parse_raw_whois(raw_data, normalized=None, never_query_handles=True, handle_
 							data["nameservers"].append(match.strip())
 						except KeyError as e:
 							data["nameservers"] = [match.strip()]
+		
+		# NOTE: this is to avoid some messy issues below
+		data["registrar"] = ''
 		# Nominet also needs some special attention
 		match = re.search("    Registrar:\n        (.+)\n", segment)
 		if match is not None:

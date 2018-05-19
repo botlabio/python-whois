@@ -33,8 +33,13 @@ def get_root_server(domain, server="whois.iana.org"):
             return match.group(1)
         
     # case where no result was found
-    tld = domain.split('.')[-1]
-    return cc_whois[cc.index(tld)]
+    
+    try:	
+    	tld = domain.split('.')[-1]
+    	return cc_whois[cc.index(tld)]
+    except KeyError:
+    	return server
+
         
     # or then raise error if nothing worked
     error_string = "No root whois found for " + str(domain)
