@@ -1,16 +1,15 @@
 from setuptools import setup
 
-setup(name='pythonwhois',
+setup(name='pywhois',
       version='2.4.3',
-      description='Module for retrieving and parsing the WHOIS data for a domain. Supports most domains. No dependencies.',
-      author='Sven Slootweg',
-      author_email='pythonwhois@cryto.net',
-      url='http://cryto.net/pythonwhois',
-      packages=['pythonwhois'],
-      package_dir={"pythonwhois":"pythonwhois"},
-      package_data={"pythonwhois":["*.dat"]},
+      description='Dependy free whois query tool for Python with extensive support for tlds',
+      author='Mikko Kotila',
+      author_email='admin@botlab.io',
+      url='https://github.com/botlabio/pywhois',
+      packages=['pywhois'],
+      package_dir={"pywhois":"pywhois"},
       install_requires=['argparse'],
-      provides=['pythonwhois'],
-      scripts=["pwhois"],
-      license="WTFPL"
+      provides=['pywhois'],
+      scripts=["pywhois"],
+      license="MIT"
      )
