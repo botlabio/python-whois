@@ -18,35 +18,39 @@ def get_records(domain, debug=False):
         
         try:
             out += record['creation_date'][0].strftime("%Y") + ','
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
             out += record['expiration_date'][0].strftime("%Y") + ','
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
             out += record['nameservers'][0] + ','
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
             out += record['nameservers'][1] + ','
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try: 
-            org = record['contacts']['registrant']['organization'] + ','
-        except (KeyError, TypeError):
+            out += '"' + record['registrar'][0] + '"' + ','
+        except (KeyError, TypeError, IndexError):
+            out += 'NA' + ','
+        try: 
+            out += '"' + record['contacts']['registrant']['organization'] + '"' + ','
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
-            out += record['contacts']['registrant']['name'] + ','
-        except (KeyError, TypeError):
+            out += '"' + record['contacts']['registrant']['name'] + '"' + ','
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
             out += record['contacts']['registrant']['email'] + ','
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA' + ','
         try:
             out += record['contacts']['registrant']['country']
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             out += 'NA'
             
         return out.lower()

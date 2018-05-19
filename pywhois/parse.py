@@ -8,7 +8,7 @@ except ImportError:
 	from cStringIO import StringIO
 
 def pkgdata(name):
-	data = pkgutil.get_data("pythonwhois", name)
+	data = pkgutil.get_data("pywhois", name)
 	if sys.version_info < (3, 0):
 		return data
 	else:
