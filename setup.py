@@ -7,9 +7,6 @@ setup(name='pywhois',
       author_email='admin@botlab.io',
       url='https://github.com/botlabio/pywhois',
       packages=['pywhois'],
-      package_dir={"pywhois":"pywhois"},
       install_requires=['argparse'],
-      provides=['pywhois'],
-      scripts=["pywhois"],
       license="MIT"
      )
