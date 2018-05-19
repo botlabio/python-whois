@@ -65,6 +65,7 @@ grammar = {
 					 'Registration Date:\s?(?P<val>.+)',
 					 'Created Date:\s?(?P<val>.+)',
 					 'Created on:\s?(?P<val>.+)',
+					 'Registered on:\s?(?P<val>.+)',
 					 'Created on\s?[.]*:\s?(?P<val>.+)\.',
 					 'Date Registered\s?[.]*:\s?(?P<val>.+)',
 					 'Domain Created\s?[.]*:\s?(?P<val>.+)',
