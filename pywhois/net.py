@@ -117,6 +117,7 @@ def whois_request(domain, server, port=43):
 
 	try:
 		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		sock.settimeout(5)
 		sock.connect((server, port))
 		sock.send(("%s\r\n" % domain).encode("utf-8"))
 		buff = b""
